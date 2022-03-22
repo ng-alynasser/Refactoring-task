@@ -142,8 +142,8 @@ class CreateInvoiceUseCase {
     }
 
     /**
-     * In case there's a wallet payment amount, we need to minus the invoice
-     * total amount from the adjusted wallet payment amount.
+     * In case there's a wallet payment amount, we need to subtract adjusted
+     * wallet payment amount from the invoice total amount.
      */
     if (directOrder.walletPaymentAmount) {
       invoiceTotalAmount -= this.adjustWalletPaymentAmount(
@@ -154,8 +154,8 @@ class CreateInvoiceUseCase {
     }
 
     /**
-     * In case there's a discount amount, we need to minus the invoice
-     * total amount from the adjusted discount amount.
+     * In case there's a wallet payment amount, we need to subtract adjusted
+     * discount amount from the invoice total amount.
      */
     if (directOrder.discountAmount) {
       invoiceTotalAmount -= this.adjustDiscountAmount(
