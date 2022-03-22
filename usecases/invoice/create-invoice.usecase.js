@@ -108,13 +108,6 @@ class CreateInvoiceUseCase {
     });
   }
 
-  updateAffectedDirectOrder(directOrder, createdInvoice) {
-    return this.invoiceFacade.updateDirectOrder(
-      { _id: directOrder._id },
-      { $addToSet: { invoicesIds: createdInvoice._id } }
-    );
-  }
-
   async updateAffectedStockAndQuotaParts(directOrderPartGroup, createdInvoice) {
     return await Promise.all(
       DirectOrderPartModel.extractStockAndQuotaPartsIds(
