@@ -5,7 +5,7 @@ const PartRepository = require("../../infrastructure/repository/part/part.reposi
 
 /**
  * @description
- * Representing the business logic behind creating invoices.
+ * Representing the workflow behind creating invoices.
  */
 class CreateInvoiceUseCase {
   constructor({ InvoiceFacade }) {
@@ -18,9 +18,9 @@ class CreateInvoiceUseCase {
   }
 
   async execute() {
-    const directOrderPartsGroups = this.invoiceFacade.groupDirectOrderParts();
-
     try {
+      const directOrderPartsGroups = this.invoiceFacade.groupDirectOrderParts();
+
       const invoiceIds = await Promise.all(
         directOrderPartsGroups.map(async (directOrderPartGroup) => {
           const { directOrderId } = directOrderPartGroup[0];
