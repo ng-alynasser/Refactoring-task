@@ -65,7 +65,9 @@ class CreateInvoiceUseCase {
            */
           const createdInvoice = this.populateInvoice(
             directOrder,
-            directOrderPartGroup
+            directOrderPartGroup,
+            partsTotalAmount,
+            invoiceTotalAmount
           );
 
           /**
@@ -93,7 +95,12 @@ class CreateInvoiceUseCase {
     }
   }
 
-  populateInvoice(directOrder, directOrderPartGroup) {
+  populateInvoice(
+    directOrder,
+    directOrderPartGroup,
+    partsTotalAmount,
+    invoiceTotalAmount
+  ) {
     return this.invoiceFacade.createInvoice({
       directOrderId: directOrder._id,
       directOrderPartsIds:
@@ -164,6 +171,8 @@ class CreateInvoiceUseCase {
         invoiceTotalAmount
       );
     }
+
+    return invoiceTotalAmount;
   }
 
   adjustWalletPaymentAmount(invoices, directOrder, invoiceTotalAmount) {
