@@ -138,7 +138,7 @@ class CreateInvoiceUseCase {
      * In case there's no related invoices, delivery fees are added.
      */
     if (directOrder.deliveryFees && !relatedInvoices.length) {
-      invoiceTotalAmount = +directOrder.deliveryFees;
+      invoiceTotalAmount += directOrder.deliveryFees;
     }
 
     /**
